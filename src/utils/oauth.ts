@@ -1,7 +1,8 @@
 const CLIENT_ID = "b9acd5c5-7853-4ebb-8435-802ca50df4a8";
 const REDIRECT_URI = "https://eternity-sky.github.io/sqrt/callback";
 const AUTHORIZE_URL = "https://www.cpoauth.com/oauth/authorize";
-const TOKEN_URL = "https://www.cpoauth.com/oauth/token";
+const TOKEN_URL = "https://www.cpoauth.com/api/oauth/token";
+const CORS_PROXY = "https://corsproxy.io/?";
 
 function generateRandomString(length: number) {
   const charset =
@@ -52,7 +53,7 @@ export async function handleCallback(code: string, state: string) {
     throw new Error("Invalid state");
   }
 
-  const response = await fetch(TOKEN_URL, {
+  const response = await fetch(CORS_PROXY + encodeURIComponent(TOKEN_URL), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
