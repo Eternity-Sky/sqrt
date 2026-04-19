@@ -1,5 +1,5 @@
 const CLIENT_ID = "b9acd5c5-7853-4ebb-8435-802ca50df4a8";
-const REDIRECT_URI = "https://eternity-sky.github.io/sqrt/callback";
+const REDIRECT_URI = "https://sqrt.pages.dev/callback";
 const AUTHORIZE_URL = "https://www.cpoauth.com/oauth/authorize";
 const TOKEN_URL = "https://www.cpoauth.com/api/oauth/token";
 const CORS_PROXY = "https://api.allorigins.win/raw?url=";
