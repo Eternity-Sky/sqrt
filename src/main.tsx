@@ -4,10 +4,21 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/sqrt">
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
-)
+const init = () => {
+  const rootElement = document.getElementById('root');
+  if (!rootElement) return;
+
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <BrowserRouter basename="/sqrt">
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>,
+  );
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
