@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { fetchPosts, Post } from '../utils/github';
-import { BookOpen, Calendar, ChevronRight } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fetchPosts } from "../utils/github";
+import type { Post } from "../utils/github";
+import { BookOpen, Calendar, ChevronRight } from "lucide-react";
 
 const Home = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -15,7 +16,7 @@ const Home = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error('Error fetching posts:', err);
+        console.error("Error fetching posts:", err);
         setLoading(false);
       });
   }, []);
@@ -31,14 +32,14 @@ const Home = () => {
   return (
     <div className="space-y-12">
       <header className="text-center space-y-4 py-12">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl font-extrabold tracking-tight bg-gradient-to-r from-brand to-purple-400 bg-clip-text text-transparent"
         >
           探索 sqrt 的思想世界
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -57,14 +58,14 @@ const Home = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Link 
+              <Link
                 to={`/article/${encodeURIComponent(post.path)}`}
                 className="group block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl hover:border-brand dark:hover:border-brand transition-all hover:shadow-lg hover:shadow-brand/5"
               >
                 <div className="flex items-start justify-between">
                   <div className="space-y-2">
                     <h2 className="text-2xl font-bold group-hover:text-brand transition-colors">
-                      {post.name.replace('.md', '').replace(/-/g, ' ')}
+                      {post.name.replace(".md", "").replace(/-/g, " ")}
                     </h2>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
                       <span className="flex items-center gap-1">
@@ -72,8 +73,7 @@ const Home = () => {
                         刚刚
                       </span>
                       <span className="flex items-center gap-1">
-                        <BookOpen size={14} />
-                        5 分钟阅读
+                        <BookOpen size={14} />5 分钟阅读
                       </span>
                     </div>
                   </div>
